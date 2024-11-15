@@ -1,0 +1,139 @@
+{
+	// Place your Release Notes workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Unit Test": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "ut",
+		"body": [
+            "test(\"${1:TEST_NAME}\", () => {",
+                "\t// Arrange",
+                "",
+                "\t// Act",
+                "",
+                "\t// Assert",
+            "});",
+		],
+		"description": "A single unit test."
+	},
+    "Unit Test Async": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "uta",
+		"body": [
+            "test(\"${1:TEST_NAME}\", async () => {",
+                "\t// Arrange",
+                "",
+                "\t// Act",
+                "",
+                "\t// Assert",
+            "});",
+		],
+		"description": "A single asynchronous unit test."
+	},
+    "Unit Test With Params": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "utp",
+		"body": [
+            "test.each<{ ${1:PARAM_NAME}: ${2:PARAM_TYPE} }>([",
+                "\t{ ${1:PARAM_NAME}: ${3:PARAM_VALUE} },",
+            "])(\"${4:TEST_DESCRIPTION}\", ({ ${1:PARAM_NAME} }) => {",
+                "\t// Arrange",
+                "\t",
+                "\t// Act",
+                "\t",
+                "\t// Assert",
+            "});",
+		],
+		"description": "A single asynchronous unit test."
+	},
+    "Describe": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "desc-empty",
+		"body": [
+            "describe(\"${1:NAME}\", () => {",
+            "$2",
+            "});"
+		],
+		"description": "A test suite."
+	},
+    "Describe With Unit Test": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "desc-ut",
+		"body": [
+            "describe(\"${1:NAME}\", () => {",
+                "\ttest(\"${2:TEST_NAME}\", () => {",
+                    "\t\t// Arrange",
+                    "",
+                    "\t\t// Act",
+                    "",
+                    "\t\t// Assert",
+                "\t});",
+            "});"
+		],
+		"description": "A test suite with a single test."
+	},
+    "Describe With Async Unit Test": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "desc-uta",
+		"body": [
+            "describe(\"${1:NAME}\", () => {",
+                "\ttest(\"${2:TEST_NAME}\", async () => {",
+                    "\t\t// Arrange",
+                    "",
+                    "\t\t// Act",
+                    "",
+                    "\t\t// Assert",
+                "\t});",
+            "});"
+		],
+		"description": "A test suite with a single asynchronous test."
+	},
+    "Comp Test Imports": {
+		"scope": "typescriptreact",
+		"prefix": "comp-test-imports",
+		"body": [
+            "import { render, screen } from \"@testing-library/react\";",
+		],
+		"description": "Common imports for react component testing."
+	},
+    "Mock IPC": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "mock-ipc",
+		"body": [
+            "mockIPC(async <T>(cmd: CommandNames): Promise<T> => {",
+                "\tswitch(cmd) {",
+                    "\t\tcase \"${1:CMD_NAME}\":",
+                        "\t\t\treturn ${2:RESULT_1} as T;",
+                    "\t\tdefault:",
+                        "\t\t\treturn ${3:RESULT_2} as T;",
+                "\t}",
+            "});",
+		],
+		"description": "Mocks the IPC calls of Tauri."
+	},
+    "Mock Module": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "mock-module",
+		"body": [
+            "vi.mock(\"${1:MODULE_IMPORT_PATH}\", () => {",
+                "\treturn {",
+                "\t",    
+                "\t};",
+            "});",
+		],
+		"description": "Mocks an entire module."
+	}
+}

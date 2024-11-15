@@ -1,0 +1,13 @@
+{
+    "main-capability": {
+        "identifier": "main-capability",
+        "description": "permissions that were migrated from v1",
+        "local": true,
+        "windows": [
+            "main"
+        ],
+        "permissions": [
+            "core:default"
+        ]
+    }
+}

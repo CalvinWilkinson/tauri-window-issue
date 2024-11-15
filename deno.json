@@ -1,0 +1,36 @@
+{
+    "tasks": {
+        "reload-cicd-cache": "deno cache --reload ./.github/cicd-scripts/*.ts",
+        "reload-dev-scripts-cache": "deno cache --reload ./dev-scripts/*.ts",
+        "reload-cache": "deno task reload-cicd-cache && deno task reload-dev-scripts-cache"
+    },
+    "exclude": [
+        "**/*.md",
+        "**/*.json",
+        "**/.vscode",
+        "**/package.json"
+    ],
+    "lint": {
+        "exclude": [
+            "playground.ts"
+        ]
+    },
+    "fmt": {
+        "exclude": [
+            "playground.ts"
+        ],
+        "useTabs": true,
+        "lineWidth": 130,
+        "indentWidth": 4,
+        "semiColons": true,
+        "singleQuote": false
+    },
+    "imports": {
+        "@std/fs": "jsr:@std/fs@1.0.4",
+        "@std/path": "jsr:@std/path@1.0.7",
+        "@supabase": "jsr:@supabase/supabase-js@2",
+        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.7",
+        "@kd/clients": "jsr:@kinsondigital/kd-clients@1.0.0-preview.14/github"
+    },
+    "nodeModulesDir": "none"
+}

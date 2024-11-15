@@ -1,0 +1,80 @@
+{
+    "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+    "productName": "smart-desk",
+    "version": "1.0.0-preview.9",
+    "identifier": "engaged-agility-preview",
+    "build": {
+        "beforeBuildCommand": "pnpm run build-ui",
+        "beforeDevCommand": "pnpm run dev-front-end",
+        "frontendDist": "../out",
+        "devUrl": "http://localhost:3000"
+    },
+    "bundle": {
+        "active": true,
+        "category": "Business",
+        "copyright": "2024",
+        "targets": [
+            "app",
+            "appimage",
+            "deb",
+            "dmg",
+            "nsis"
+        ],
+        "externalBin": [],
+        "icon": [
+            "icons/32x32.png",
+            "icons/128x128.png",
+            "icons/128x128@2x.png",
+            "icons/icon.icns",
+            "icons/icon.ico"
+        ],
+        "windows": {
+            "certificateThumbprint": null,
+            "digestAlgorithm": "sha256",
+            "timestampUrl": ""
+        },
+        "longDescription": "(S)cheduling (M)anagment (A)dmin (R)eporting (T)ool",
+        "macOS": {
+            "entitlements": null,
+            "exceptionDomain": "",
+            "frameworks": [],
+            "providerShortName": null,
+            "signingIdentity": null
+        },
+        "resources": [],
+        "shortDescription": "Admin Tool",
+        "linux": {
+            "deb": {
+                "depends": []
+            }
+        },
+        "createUpdaterArtifacts": true
+    },
+    "plugins": {
+        "updater": {
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEEyNjVEQzlGQjQ5NTBFNzIKUldSeURwVzBuOXhsb3ZFSG5oL2dXZHRxRzAxTlNpb0FndzVQejZsTXo0TGE3cE5kT2VVTUVFWG8K",
+            "endpoints": [
+                "https://smart-desk-update-preview.deno.dev/latest-release-meta-data"
+            ]
+        }
+    },
+    "app": {
+        "withGlobalTauri": true,
+        "windows": [
+            {
+                "title": "SMART Desk",
+                "center": true,
+                "fullscreen": false,
+                "resizable": true,
+                "width": 1500,
+                "height": 900
+            }
+        ],
+        "security": {
+            "csp": null,
+            "capabilities": [
+                "main-capability"
+            ]
+        }
+    }
+}

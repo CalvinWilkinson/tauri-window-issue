@@ -1,0 +1,44 @@
+{
+	"$schema": "https://json.schemastore.org/eslintrc",
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"next/core-web-vitals"
+	],
+	"plugins": [
+		"react",
+		"@typescript-eslint"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"quotes": "error",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"semi": "error",
+		"at-rule-no-unknown": [
+			0,
+			{
+				"ignoreAtRules": [
+					"tailwind",
+					"apply",
+					"variants",
+					"responsive",
+					"screen"
+				]
+			}
+		]
+	},
+	"ignorePatterns": [
+		"**/database.types.ts"
+	]
+}

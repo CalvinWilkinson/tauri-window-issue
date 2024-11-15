@@ -1,0 +1,71 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{ // DEV UI ONLY
+			"name": "Dev UI Only",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "pnpm run dev-front-end"
+		},
+		{ // DEV BACKEND DEBUG (RUST/FULL-APP)
+			"request": "launch",
+			"name": "Dev Backend Debug (RUST/FULL-APP)",
+			"type": "lldb",
+			"cargo": {
+				"args": [
+					"build",
+					"--manifest-path=./srccls-tauri/Cargo.toml",
+					"--no-default-features"
+				]
+			},
+			// task for the `beforeDevCommand` if used, must be configured in `.vscode/tasks.json`
+			"preLaunchTask": "ui:dev"
+		},
+		{ // PROD BACKEND DEBUG (RUST/FULL-APP)
+			"request": "launch",
+			"name": "Prod Backend Debug (RUST/FULl-APP)",
+			"type": "lldb",
+			"cargo": {
+				"args": [
+					"build",
+					"--release",
+					"--manifest-path=./src-tauri/Cargo.toml"
+				]
+			},
+			// task for the `beforeBuildCommand` if used, must be configured in `.vscode/tasks.json`
+			"preLaunchTask": "ui:build"
+		},
+		{ // CLEAN
+			"request": "launch",
+			"name": "Clean",
+			"type": "node",
+			"program": "${workspaceFolder}/scripts/clean.ts",
+			"cwd": "${workspaceFolder}",
+			"windows": {
+				"runtimeExecutable": "${userHome}/kinso/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno"
+			},
+			"runtimeArgs": [
+				"run",
+				"-c",
+				"${workspaceFolder}/deno.json",
+				"-RW",
+				"--inspect-wait",
+			],
+			"attachSimplePort": 9229
+		},
+		{ // DEV ATTACH FRONT END
+			"name": "Dev Attach Front End",
+			"type": "msedge", // Required for windows. Tauri on windows uses MS edge for the webview
+			"request": "attach",
+			"port": 8426, // This is the port that we will use to connect to the webview
+			"url": "http://localhost:3000", // This is the default local host and port for the front end
+			"webRoot": "${workspaceFolder}",
+		},
+	]
+}

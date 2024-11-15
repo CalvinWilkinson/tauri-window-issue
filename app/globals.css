@@ -1,0 +1,76 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    color: rgb(var(--foreground-rgb));
+
+    background-color: rgb(24, 24, 24);
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.btn {
+    /* LAYOUT AND SIZING */
+    @apply w-full focus:outline-none rounded-lg px-5 py-2.5;
+
+    /* TEXT SETTINGS */
+    @apply text-white font-medium text-lg text-center;
+
+    /* SHADOW SETTINGS */
+    @apply shadow-md shadow-gray-950;
+
+    /* COLORS */
+    @apply bg-sky-800 hover:bg-sky-700 focus:bg-sky-700 disabled:bg-gray-600 disabled:text-gray-500;
+}
+
+/* Only animate the scale animation on hover if the button is enabled */
+.btn:not(:disabled) {
+    @apply transform transition duration-150 ease-in-out hover:scale-105;
+}
+
+/* Used to disable the default adornment of password fields */
+.default-adornment-disabled {
+    input[type="password"]::-ms-reveal {
+        display: none;
+    }
+}
+
+/* Animation to scale an element up and down repeatedly */
+@keyframes scale-up-down {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.animate-scale {
+    animation: scale-up-down 1s infinite;
+}
