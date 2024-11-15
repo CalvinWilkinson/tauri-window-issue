@@ -66,6 +66,7 @@
                 "center": true,
                 "fullscreen": false,
                 "resizable": true,
+                "maximized": true,
                 "width": 1500,
                 "height": 900
             }
